@@ -71,7 +71,7 @@ A = [zeros(4,4) eye(4) zeros(4,2);
     0 k4/J_L2 k5/J_L2 -(k4+k5)/J_L2 0 b4/J_L2 b5/J_L2 -(b4+b5)/J_L2 0 1/J_L2;
     0 0 0 0 0 0 0 0 -0.2 0;
     0 0 0 0 0 0 0 0 0 -0.2];
-[Ad_1, Bd_1, Cd_1, Kgain_1, P_1] = get_ss_KF(A,B,G,C,Q,R,k2,k5,Ts);
+[Ad_1, Bd_1, Kgain_1, P_1] = get_ss_KF(A,B,G,C,Q,R,k2,k5,Ts);
 % hypothesis 2:
 k2 = 1;
 k5 = 1.75;
@@ -82,7 +82,7 @@ A = [zeros(4,4) eye(4) zeros(4,2);
     0 k4/J_L2 k5/J_L2 -(k4+k5)/J_L2 0 b4/J_L2 b5/J_L2 -(b4+b5)/J_L2 0 1/J_L2;
     0 0 0 0 0 0 0 0 -0.2 0;
     0 0 0 0 0 0 0 0 0 -0.2];
-[Ad_2, Bd_2, Cd_2, Kgain_2, P_2] = get_ss_KF(A,B,G,C,Q,R,k2,k5,Ts);
+[Ad_2, Bd_2, Kgain_2, P_2] = get_ss_KF(A,B,G,C,Q,R,k2,k5,Ts);
 % hypothesis 3:
 k2 = 2;
 k5 = 1.25;
@@ -93,4 +93,4 @@ A = [zeros(4,4) eye(4) zeros(4,2);
     0 k4/J_L2 k5/J_L2 -(k4+k5)/J_L2 0 b4/J_L2 b5/J_L2 -(b4+b5)/J_L2 0 1/J_L2;
     0 0 0 0 0 0 0 0 -0.2 0;
     0 0 0 0 0 0 0 0 0 -0.2];
-[Ad_3, Bd_3, Cd_3, Kgain_3, P_3] = get_ss_KF(A,B,G,C,Q,R,k2,k5,Ts);
+[Ad_3, Bd_3, Kgain_3, P_3] = get_ss_KF(A,B,G,C,Q,R,k2,k5,Ts);
