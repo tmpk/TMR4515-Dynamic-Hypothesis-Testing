@@ -5,6 +5,7 @@
 % First the continuous system is defined and discretized along with the
 % noise covariance matrices in order to implement a Kalman filter with a
 % time-varying gain matrix.
+%
 % Then, for each hypothesis, the system is discretized by the MATLAB 
 % function kalmd through the call to get_ss_KF, which returns the discrete 
 % system matrices and the steady-state gain matrix, as well as the steady-
@@ -41,13 +42,13 @@ C(1,1)=1;
 C(2,4)=1;
 
 % discrete system matrices
-[Ad, Bd] = c2d(A,B,Ts);     % discrete A and B matrices
+[Ad, Bd] = c2d(A,B,Ts);     
 
-% Covariance for process noise with unity intensity; continous time:
-Q = 1*eye(2);
+% Covariance for process noise; continous time:
+Q = XI;
 
-% Covariance for measurement noise with 10^-6 intensity; continuous time:
-R = 10^-6*eye(2);       
+% Covariance for measurement noise; continuous time:
+R = TH;       
 
 %% Calculations for discrete time noise covariance, from van Loan's method:
 Q_ = G*Q*G'; 
@@ -71,7 +72,7 @@ A = [zeros(4,4) eye(4) zeros(4,2);
     0 k4/J_L2 k5/J_L2 -(k4+k5)/J_L2 0 b4/J_L2 b5/J_L2 -(b4+b5)/J_L2 0 1/J_L2;
     0 0 0 0 0 0 0 0 -0.2 0;
     0 0 0 0 0 0 0 0 0 -0.2];
-[Ad_1, Bd_1, Kgain_1, P_1] = get_ss_KF(A,B,G,C,Q,R,k2,k5,Ts);
+[kest_1, Ad_1, Bd_1, Kgain_1, P_1] = get_ss_KF(A,B,G,C,Q,R,k2,k5,Ts);
 % hypothesis 2:
 k2 = 1;
 k5 = 1.75;
@@ -82,7 +83,7 @@ A = [zeros(4,4) eye(4) zeros(4,2);
     0 k4/J_L2 k5/J_L2 -(k4+k5)/J_L2 0 b4/J_L2 b5/J_L2 -(b4+b5)/J_L2 0 1/J_L2;
     0 0 0 0 0 0 0 0 -0.2 0;
     0 0 0 0 0 0 0 0 0 -0.2];
-[Ad_2, Bd_2, Kgain_2, P_2] = get_ss_KF(A,B,G,C,Q,R,k2,k5,Ts);
+[kest_2, Ad_2, Bd_2, Kgain_2, P_2] = get_ss_KF(A,B,G,C,Q,R,k2,k5,Ts);
 % hypothesis 3:
 k2 = 2;
 k5 = 1.25;
@@ -93,4 +94,4 @@ A = [zeros(4,4) eye(4) zeros(4,2);
     0 k4/J_L2 k5/J_L2 -(k4+k5)/J_L2 0 b4/J_L2 b5/J_L2 -(b4+b5)/J_L2 0 1/J_L2;
     0 0 0 0 0 0 0 0 -0.2 0;
     0 0 0 0 0 0 0 0 0 -0.2];
-[Ad_3, Bd_3, Kgain_3, P_3] = get_ss_KF(A,B,G,C,Q,R,k2,k5,Ts);
+[kest_3, Ad_3, Bd_3, Kgain_3, P_3] = get_ss_KF(A,B,G,C,Q,R,k2,k5,Ts);

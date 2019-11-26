@@ -20,5 +20,7 @@ title('Convergence of $K$ to $K_{\infty}$', 'Interpreter', 'latex', 'FontSize', 
 legend([p1, p2],'$\| K_{\infty} \|_2$', '$\| K \|_2$', 'Interpreter', 'latex', 'FontSize', 13);
 ylabel('$\|\cdot\|_2$', 'Interpreter', 'latex', 'FontSize', 13)
 xlabel('\textbf{Time} $[s]$', 'Interpreter', 'latex', 'FontSize', 13)
+xlim([0 4]);
+ylim([0 0.25]);
 grid on
 hold off

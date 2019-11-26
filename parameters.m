@@ -1,9 +1,8 @@
 
 NN=3;%numver of models
 Ts=.001;                           %%Sample time
-TH1=10^(-6); TH2=10^(-6); TH=[TH1 0;
-                            0 TH2];
-XI1=1;     XI2=1;     XI=diag([XI1,XI2]); % unedited: XI=diag(XI1,XI2)
+TH1=10^(-6); TH2=10^(-6); TH=daug(TH1,TH2);
+XI1=1;     XI2=11;     XI=daug(XI1,XI2); 
 
 %OK! used in my thesis, Dec 5, 2005
 % alfa1=1;                 %fraequency bandwidth of first order filter making disturbance d1 acting on m2
