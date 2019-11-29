@@ -1,0 +1,2 @@
+After clicking the "Load\Parameters button in the Simulink file, run the script init_kalman to load the necessary variables
+into the workspace. Once that is done, simulations using the Kalman filter (both versions) can be run.
