@@ -1,6 +1,6 @@
 % This script sets up the necessary discrete-time matrices for 
 % implementation of the Kalman filter, and must be run after
-% "Load/Parameters" in the simulink file.
+% "Load\Parameters" in the Simulink file.
 %
 % First the continuous system is defined and discretized along with the
 % noise covariance matrices in order to implement a Kalman filter with a
@@ -65,6 +65,7 @@ Rd = R/Ts;          % discrete measurement noise covariance
 % hypothesis 1: 
 k2 = 2;
 k5 = 2;
+% set up corresponding A matrix:
 A = [zeros(4,4) eye(4) zeros(4,2);
     -(k1+k2+k3)/J_L1 k2/J_L1 k3/J_L1 0 -(b1+b2+b3)/J_L1 b2/J_L1 b3/J_L1 0 1/J_L1 0;
     k2/J_M1 -(k2+k4)/J_M1 0 k4/J_M1 b2/J_M1 -(b2+b4)/J_M1 0 b4/J_M1 0 0;
@@ -76,6 +77,7 @@ A = [zeros(4,4) eye(4) zeros(4,2);
 % hypothesis 2:
 k2 = 1;
 k5 = 1.75;
+% set up corresponding A matrix:
 A = [zeros(4,4) eye(4) zeros(4,2);
     -(k1+k2+k3)/J_L1 k2/J_L1 k3/J_L1 0 -(b1+b2+b3)/J_L1 b2/J_L1 b3/J_L1 0 1/J_L1 0;
     k2/J_M1 -(k2+k4)/J_M1 0 k4/J_M1 b2/J_M1 -(b2+b4)/J_M1 0 b4/J_M1 0 0;
@@ -87,6 +89,7 @@ A = [zeros(4,4) eye(4) zeros(4,2);
 % hypothesis 3:
 k2 = 2;
 k5 = 1.25;
+% set up corresponding A matrix
 A = [zeros(4,4) eye(4) zeros(4,2);
     -(k1+k2+k3)/J_L1 k2/J_L1 k3/J_L1 0 -(b1+b2+b3)/J_L1 b2/J_L1 b3/J_L1 0 1/J_L1 0;
     k2/J_M1 -(k2+k4)/J_M1 0 k4/J_M1 b2/J_M1 -(b2+b4)/J_M1 0 b4/J_M1 0 0;
